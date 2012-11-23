@@ -36,6 +36,10 @@ LOCAL_CONLYFLAGS += \
 LOCAL_CPPFLAGS += \
     -std=gnu++11 \
 
+ifeq ($(TARGET_NEEDS_BIONIC_PRELINK_SUPPORT),true)
+    LOCAL_CFLAGS += -DENABLE_PRELINK_SUPPORT
+endif
+
 # We need to access Bionic private headers in the linker.
 LOCAL_CFLAGS += -I$(LOCAL_PATH)/../libc/
 
